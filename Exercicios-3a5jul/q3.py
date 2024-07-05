@@ -1,16 +1,19 @@
-lista1 = []
-lista2 = []
-print('---- PRIMEIRA LISTA ----')
-for i in range(3):
-    valor1 = int(input(f"selecione o valor número {i+1}: "))
-    lista1.append(valor1)
-print('\n---- SEGUNDA LISTA ----')
-for i in range(3):
-    valor2 = int(input(f"selecione o valor número {i+1}: "))
-    lista2.append(valor2)
+def func_cript(frase, deslocamento):
+  alfabeto = 'abcdefghijklmnopqrstuvwxyz'
+  frase_criptografada = ""
 
-nova_lista = lista1+lista2
+  for e in frase.lower():
+    if e in alfabeto:
+      posicao = (alfabeto.index(e)+deslocamento) % len(alfabeto)
+      frase_criptografada += alfabeto[posicao]
+    else:
+      frase_criptografada += e
 
-nova_lista.sort()
+  return frase_criptografada
 
-print(nova_lista)
+frase = input("Digite uma frase para criptografar: ")
+deslocamento = 3
+
+resultado = func_cript(frase, deslocamento)
+print(f"A frase utilizada é: {frase}")
+print(f"A frase criptografada é: {resultado}")
