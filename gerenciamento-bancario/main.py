@@ -1,3 +1,4 @@
+import json
 from tabulate import tabulate
 
 contas = {}
@@ -5,16 +6,18 @@ contas = {}
 def cadastro_contas():
   conta = {}
   
-  numero_conta = 1
-  
-  conta['nome'] = input("Informe o nome do correntista: ")
-  conta['data_abertura'] = input("Informe a data da abertura da conta: (dd/mm/aaaa)")
+  print("----- Cadastro de contas -----")
+  """conta['nome'] = input("Informe o nome do correntista: ")
+  conta['data_abertura'] = input("Informe a data da abertura da conta: (dd/mm/aaaa) ")"""
   conta['saldo'] = 0
   
+  numero_conta = 1
+  
   while True:
+    print("----- Tipo de conta -----")
     print("[1] Poupança")
-    print("[2] Corrente\n")
-    
+    print("[2] Corrente")
+    print("------------------------")
     try:
       escolha = int(input("Informe o tipo de conta: "))
     except ValueError:
@@ -26,33 +29,34 @@ def cadastro_contas():
     if escolha == 2:
       conta['tipo_conta'] = "Corrente"
       break
-
-  
-  for numero_conta in contas:
-    numero_conta += 1
-    if numero_conta in contas:
-      print("ID já cadastrado.")
-    else:
-      conta['numero_conta'] = numero_conta
-      break
- 
+      
+  if not contas:
+    conta['numero_conta'] = numero_conta
+  else:
+    for numero_conta in contas:
+      numero_conta += 1
+      if numero_conta not in contas:
+        conta['numero_conta'] = numero_conta
+        break
 
   contas[numero_conta] = conta
+  print("------------------------")
+ 
+  
+  print("*--- Cadastro realizado com sucesso ---*")
 
 def operacoes():
-  print("----- Operações Financeiras -----")
-  print("[1] Depósito")
-  print("[2] Saque")
-
   while True:
     try:
       numero_conta = int(input("Informe o número da conta: "))
       if numero_conta in contas:
+        print("----- Operações Financeiras -----")
+        print("[1] Depósito")
+        print("[2] Saque")
+        print("---------------------------------")
         try:
           opcao = int(input("Informe a operação que deseja fazer: "))
-        except ValueError:
-          print("Valor inválido.")
-          continue
+        
           if opcao == 1:
             while True:
               try:
@@ -61,9 +65,14 @@ def operacoes():
                 print("Valor inválido.")
                 continue
   
-                if valor_deposito:
+              if valor_deposito:
                   contas[numero_conta]['saldo'] += valor_deposito
                   break
+                
+        except ValueError:
+          print("Valor inválido.")
+          continue
+        
     except ValueError:
       print("Valor inválido.")
       continue
@@ -73,7 +82,7 @@ def listar_contas():
     print("Não há contas cadastradas.")
     return
 
-  data = [[
+  """data = [[
     numero_conta,
     conta['nome'],
     conta['data_abertura'],
@@ -82,8 +91,17 @@ def listar_contas():
   ] for numero_conta, conta in contas.items()]
 
   print(
-    tabulate(data, headers=['Numero conta', 'Nome do correntista', 'Data de abertura', 'Saldo', 'Tipo conta'], tablefmt='simple_grid'))
-  
+    tabulate(data, headers=['Número da conta', 'Nome do correntista', 'Data de abertura', 'Saldo', 'Tipo de conta'], tablefmt='simple_grid'))"""
+
+  data = [[
+    numero_conta,
+    conta['saldo'],
+    conta['tipo_conta'],
+  ]for numero_conta, conta in contas.items()]
+
+  print(
+    tabulate(data, headers=["Número da conta", "Saldo", "Tipo da conta"], tablefmt='simple_grid')
+  )
 
 def carregar_dados():
   global contas
