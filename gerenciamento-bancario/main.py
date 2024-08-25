@@ -73,14 +73,6 @@ def listar_contas():
     print("Não há contas cadastradas.")
     return
 
-  """for numero_conta, conta in contas.items():
-    print('---------------')
-    print(f"Número da conta: {numero_conta}")
-    print(f"Nome do correntista: {conta['nome']}")
-    print(f"Data de abertura: {conta['data_abertura']}")
-    print(f"Saldo da conta: {conta['saldo']}")
-    print(f"Tipo de conta: {conta['tipo_conta']}")
-    print('---------------')"""
   data = [[
     numero_conta,
     conta['nome'],
