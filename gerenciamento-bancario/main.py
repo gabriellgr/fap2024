@@ -7,8 +7,8 @@ def cadastro_contas():
   conta = {}
   
   print("----- Cadastro de contas -----")
-  """conta['nome'] = input("Informe o nome do correntista: ")
-  conta['data_abertura'] = input("Informe a data da abertura da conta: (dd/mm/aaaa) ")"""
+  conta['nome'] = input("Informe o nome do correntista: ")
+  conta['data_abertura'] = input("Informe a data da abertura da conta: (dd/mm/aaaa) ")
   conta['saldo'] = 0
   
   numero_conta = 1
@@ -40,49 +40,75 @@ def cadastro_contas():
         break
 
   contas[numero_conta] = conta
-  print("------------------------")
  
-  
-  print("*--- Cadastro realizado com sucesso ---*")
+  print("\n---- Cadastro realizado com sucesso ----")
 
 def operacoes():
   while True:
     try:
-      numero_conta = int(input("Informe o número da conta: "))
-      if numero_conta in contas:
-        print("----- Operações Financeiras -----")
-        print("[1] Depósito")
-        print("[2] Saque")
-        print("---------------------------------")
+        numero_conta = int(input("Informe o número da conta: "))
+
+        if numero_conta in contas:
+            print("----- Operações Financeiras -----")
+            print("[1] Depósito")
+            print("[2] Saque")
+            print("---------------------------------")
+        
         try:
-          opcao = int(input("Informe a operação que deseja fazer: "))
-        
-          if opcao == 1:
-            while True:
-              try:
-                valor_deposito = float(input("Informe o valor do depósito: "))
-              except ValueError:
-                print("Valor inválido.")
-                continue
-  
-              if valor_deposito:
-                  contas[numero_conta]['saldo'] += valor_deposito
-                  break
-                
+            opcao = int(input("Informe a operação que deseja fazer: "))
+          
+            if opcao == 1:
+                while True:
+                    try:
+                        valor_deposito = float(input("Informe o valor do depósito: "))
+
+                        if valor_deposito:
+                            contas[numero_conta]['saldo'] += valor_deposito
+                            print("-----------------------------")
+                            print("Valor depositado com sucesso.")
+                            print("-----------------------------")
+                            break
+                        break
+
+                    except ValueError:
+                        print("Valor inválido.")
+                        continue
+            else:
+                break
+
+            if opcao == 2:
+                while True:
+                    try:
+                        valor_saque = float(input("Informe o valor do saque: "))
+
+                        if valor_saque:
+                            contas[numero_conta]['saldo'] -= valor_saque
+                            break
+                        break
+
+                    except ValueError:
+                        print("Valor inválido.")
+                        continue
+            else:
+                break
+
         except ValueError:
-          print("Valor inválido.")
-          continue
-        
+            print("Valor inválido.")
+            continue
+        break
+
     except ValueError:
-      print("Valor inválido.")
-      continue
+        print("Valor inválido.")
+        continue
 
 def listar_contas():
   if not contas:
+    print("--------------------------")
     print("Não há contas cadastradas.")
+    print("--------------------------")
     return
 
-  """data = [[
+  data = [[
     numero_conta,
     conta['nome'],
     conta['data_abertura'],
@@ -91,28 +117,19 @@ def listar_contas():
   ] for numero_conta, conta in contas.items()]
 
   print(
-    tabulate(data, headers=['Número da conta', 'Nome do correntista', 'Data de abertura', 'Saldo', 'Tipo de conta'], tablefmt='simple_grid'))"""
+    tabulate(data, headers=['Número da conta', 'Nome do correntista', 'Data de abertura', 'Saldo', 'Tipo de conta'], tablefmt='simple_grid'))
 
-  data = [[
-    numero_conta,
-    conta['saldo'],
-    conta['tipo_conta'],
-  ]for numero_conta, conta in contas.items()]
-
-  print(
-    tabulate(data, headers=["Número da conta", "Saldo", "Tipo da conta"], tablefmt='simple_grid')
-  )
 
 def carregar_dados():
   global contas
   with open("dados_contas.json", "r") as arquivo_json:
       contas = json.load(arquivo_json)
-  print("Dados carregados com sucesso.")
+  print("\nDados carregados com sucesso.\n")
 
 def salvar_dados():
   with open("dados_contas.json", "w") as arquivo_json:
       json.dump(contas, arquivo_json)
-  print("Dados das contas salvos com sucesso.")
+  print("\nDados das contas salvos com sucesso.\n")
 
 while True:
   print("[1] Cadastrar conta")
