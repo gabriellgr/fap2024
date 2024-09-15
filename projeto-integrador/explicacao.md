@@ -52,7 +52,7 @@ def agendar_tarde(self):
 lista_de_leitos = []
 
 #criando 199 leitos:
-for criar_leito in range(1,20,1):
+for criar_leito in range(1,200,1):
     leito = Leito(identificador=f'{criar_leito}',data = date.today(),manha=[],tarde=[],noite=[])
     lista_de_leitos.append(leito)
 
