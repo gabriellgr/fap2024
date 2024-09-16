@@ -73,8 +73,6 @@ class Leito():
                 print(f'\nLeito {leito['identificador']} {leito['status']}')
     
         return    
-    
-        
     # A fazer
     def _carregar_dados(self,leitos):
         #adicionar leitos após fechamento do programa
