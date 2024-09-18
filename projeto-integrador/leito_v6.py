@@ -131,7 +131,7 @@ class Leito():
                 if info['identificacao'] == {'nome':paciente['nome'], 'cpf':paciente['cpf']}:
                     for chave, valor in info.items():
                         print(chave, valor)
-                        
+                    return    
         print('Não encontrado ou não existente')    
         return
     
