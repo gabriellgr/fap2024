@@ -102,7 +102,7 @@ class Leito():
             for paciente in self.pacientes:
                 for leito in self.leitos:
                     if leito['identificador'] == paciente['leito']:
-                        print(f'Paciente: {paciente["nome"]}, no leito: {leito['identificador']}')
+                        print(f"Paciente: {paciente['nome']}, no leito: {leito['identificador']}")
         else:
             print('\nNão existem pacientes, por enquanto')
             
@@ -115,8 +115,8 @@ class Leito():
             for paciente in self.pacientes:
                 for leito in self.leitos:
                     if leito['identificador'] == paciente['leito'] == identificador:
-                        print(f'Paciente: {paciente["nome"]}, no leito: {leito['identificador']}')
-                        print(f'CPF: {paciente['cpf']}, data de nascimento: {paciente['data_de_nascimento']}, status: {paciente['status_do_paciente'], }')
+                        print(f"Paciente: {paciente['nome']}, no leito: {leito['identificador']}")
+                        print(f"CPF: {paciente['cpf']}, data de nascimento: {paciente['data_de_nascimento']}, status: {paciente['status_do_paciente'], }")
                         return
                     
         else:
@@ -129,7 +129,7 @@ class Leito():
                 if info['identificacao'] == {'nome':paciente['nome'], 'cpf':paciente['cpf']}:
                     for chave, valor in info.items():
                         print(chave, valor)
-                        
+                    return    
         print('Não encontrado ou não existente')    
         return
     
@@ -162,14 +162,14 @@ class Leito():
         existe = True
         for leito in self.leitos:
             if leito['manha'] == 'livre' or leito['tarde'] == 'livre' or leito['noite'] =='livre':
-                print(f'Leito {leito['identificador']} está {leito['manha']} pela manhã')
-                print(f'Leito {leito['identificador']} está {leito['tarde']} pela tarde')
-                print(f'Leito {leito['identificador']} está {leito['noite']} pela noite')
+                print(f"Leito {leito['identificador']} está {leito['manha']} pela manhã")
+                print(f"Leito {leito['identificador']} está {leito['tarde']} pela tarde")
+                print(f"Leito {leito['identificador']} está {leito['noite']} pela noite")
                 existe = False
             elif leito['manha'] == 'agendado' or leito['tarde'] == 'agendado' or leito['noite'] =='agendado':
-                print(f'Leito {leito['identificador']} está {leito['manha']} pela manhã data: {leito['data_inicial']}')
-                print(f'Leito {leito['identificador']} está {leito['tarde']} pela tarde data: {leito['data_inicial']}')
-                print(f'Leito {leito['identificador']} está {leito['noite']} pela noite data: {leito['data_inicial']}')
+                print(f"Leito {leito['identificador']} está {leito['manha']} pela manhã data: {leito['data_inicial']}")
+                print(f"Leito {leito['identificador']} está {leito['tarde']} pela tarde data: {leito['data_inicial']}")
+                print(f"Leito {leito['identificador']} está {leito['noite']} pela noite data: {leito['data_inicial']}")
                 existe = False
         if existe:
             print('\nTodos os leitos estão em uso no momento')
@@ -257,7 +257,7 @@ class Leito():
         existe = True
         for leito in self.leitos:
             if leito['data_inicial']:
-                print(f'Leito: {leito['identificador']}, manhã:{leito['manha']}, tarde: {leito['tarde']}, noite:  {leito['noite']} ')
+                print(f"Leito: {leito['identificador']}, manhã:{leito['manha']}, tarde: {leito['tarde']}, noite:  {leito['noite']} ")
                 existe = False
         if existe:
             print('\nNenhum leito em uso')   
