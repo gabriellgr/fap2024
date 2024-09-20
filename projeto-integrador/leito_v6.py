@@ -26,7 +26,6 @@ class Leito():
                 'data_final':None,
             }#pensando que há:
             
-            
             documentacao = 'stand by'#Em desenvolviemnto ...
             self.leitos.append(leito)
             
@@ -120,7 +119,6 @@ class Leito():
                         print(f'CPF: {paciente['cpf']}, data de nascimento: {paciente['data_de_nascimento']}, status: {paciente['status_do_paciente'], }')
                         return
                     
-            
         else:
             print('\nNão existem pacientes, por enquanto')   
         return
@@ -189,32 +187,37 @@ class Leito():
         
         if horario == 'manha':
             for leito in self.leitos:
-                if leito['identificador'] == identificador:
+                if leito['identificador'] == identificador and leito['manha'] == 'agendado' or leito['identificador'] == identificador and leito['tarde'] == 'livre':
                     leito['manha'] = 'agendado'
-                    leito['tarde'] = 'livre'
-                    leito['noite'] ='livre'
-                    leito['data_inicial'] = data
-                    print('\nTudo pronto!')
-                    return
-                    
-        elif horario == 'tarde':
-            for leito in self.leitos:
-                if leito['identificador'] == identificador:
-                    leito['manha'] = 'livre'
-                    leito['tarde'] = 'agendado'
-                    leito['noite'] ='livre'
                     leito['data_inicial'] = data
                     print('\nTudo pronto!')
                     return
                 
-        elif horario == 'noite':
+                elif leito['tarde'] == 'ocupado':
+                    print(f'\nJá existe agendamento para esse leito neste horário')
+                    return
+                    
+        elif horario == 'tarde':
             for leito in self.leitos:
-                if leito['identificador'] == identificador:
-                    leito['manha'] = 'livre'
-                    leito['tarde'] = 'livre'
+                if leito['identificador'] == identificador and leito['tarde'] == 'agendado' or leito['identificador'] == identificador and leito['tarde'] == 'livre':
+                    leito['tarde'] = 'agendado'
+                    leito['data_inicial'] = data
+                    print('\nTudo pronto!')
+                    return
+                
+                elif leito['noite'] == 'ocupado':
+                    print(f'\nJá existe agendamento para esse leito neste horário')
+                    return
+                
+        if leito['identificador'] == identificador and leito['tarde'] == 'agendado' or leito['identificador'] == identificador and leito['tarde'] == 'livre':
+            for leito in self.leitos:
+                if leito['identificador'] == identificador and leito['noite'] == 'agendado' or leito['identificador'] == identificador and leito['noite'] == 'livre':
                     leito['noite'] ='agendado'
                     leito['data_inicial'] = data
                     print('\nTudo pronto!')
+                    return
+                elif leito['noite'] == 'ocupado':
+                    print(f'\nJá existe agendamento para esse leito neste horário')
                     return
     #Procurando e retoronando um leito que esteja disponivel integralmente
     def leitos_para_agendar(self):
