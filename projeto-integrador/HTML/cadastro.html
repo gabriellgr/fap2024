@@ -12,7 +12,7 @@
       <ul>
           <li><a href="home.html">Home</a></li>
           <li><a href="portal_do_paciente.html">Portal do paciente</a></li>
-          
+          <li><a href="sobre.html">Sobre</a></li>
       </ul>
       <br>
       
@@ -36,57 +36,22 @@
             <br>
             <br>
             
-
-
-
-
-
-
-
-            <!DOCTYPE html>
-            <html lang="pt-BR">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Escolha de Médico</title>
-                <style>
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 20px;
-                    }
-            
-                    .medicos {
-                        display: none;
-                        margin-top: 10px;
-                    }
-            
-                    label {
-                        margin-right: 10px;
-                    }
-            
-                    .botao-exibir {
-                        margin-bottom: 10px;
-                    }
-                </style>
-           
-          
-            
-                <h1>profissionais disponíveis</h1>
+            <h1>Escolha um profissional:</h1>
             
                 <button class="botao-exibir" onclick="exibirMedicos()">Opções</button>
             
                 <div class="medicos" id="listaMedicos">
                     <form>
-                        <input type="checkbox" id="medico1" name="medico1" value="Dr. João">
+                        <input type="radio" id="medico1" name="medico" value="Dr. João">
                         <label for="medico1">Dr. João</label><br>
             
-                        <input type="checkbox" id="medico2" name="medico2" value="Dra. Maria">
+                        <input type="radio" id="medico2" name="medico" value="Dra. Maria">
                         <label for="medico2">Dra. Maria</label><br>
             
-                        <input type="checkbox" id="medico3" name="medico3" value="Dr. Carlos">
+                        <input type="radio" id="medico3" name="medico" value="Dr. Carlos">
                         <label for="medico3">Dr. Carlos</label><br>
             
-                        <input type="checkbox" id="medico4" name="medico4" value="Dra. Fernanda">
+                        <input type="radio" id="medico4" name="medico" value="Dra. Fernanda">
                         <label for="medico4">Dra. Fernanda</label><br>
             
                         <button type="button" onclick="verificarEscolha()">Confirmar Escolha</button>
@@ -102,39 +67,22 @@
                     }
             
                     function verificarEscolha() {
-                        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                        var escolha = [];
+                        var radioSelecionado = document.querySelector('input[name="medico"]:checked');
+                        var escolha = radioSelecionado ? radioSelecionado.value : null;
             
-                        checkboxes.forEach(function(checkbox) {
-                            escolha.push(checkbox.value);
-                        });
-            
-                        if (escolha.length > 0) {
-                            document.getElementById('escolhaFinal').innerText = "Você escolheu: " + escolha.join(', ');
+                        if (escolha) {
+                            document.getElementById('escolhaFinal').innerText = "Você escolheu: " + escolha;
                         } else {
                             document.getElementById('escolhaFinal').innerText = "Nenhum médico selecionado.";
                         }
                     }
                 </script>
             
-           
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
+        <footer>
+            <p>&copy; 2024 Direitos Reservados Softex</p>
+        </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
