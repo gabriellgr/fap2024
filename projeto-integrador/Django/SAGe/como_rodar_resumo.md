@@ -1,5 +1,5 @@
  ### Como rodar o programa:
-- Na mesma pasta contendo o manage.py, depois de intalar o django faça no terminal:
+- Na mesma pasta contendo o manage.py, depois de intalar o django faça no terminal (no caso, windows):
  ```cmd
  python .\manage.py runserver
  ```
@@ -14,7 +14,7 @@
         return render(request, 'site_SAGe/home.html')
 ```
 
-- O arquivo home.html, como os, outros está localizado em: templates/site_SAGe/home.html. **Observação**: a pasta obrigatoriamente deve ter o nome "templates".
+- O arquivo home.html, como os, outros está localizado em: PI_SAGe/templates/site_SAGe/home.html. **Observação**: a pasta "templates" **obrigatoriamente** deve ter o nome "templates".
 
 - **Definição das rotas:** SAGe/urls.py, onde colocamos as Urls.
 
@@ -33,9 +33,31 @@ urlpatterns = [
 
 - **Arquivos html:** Local PI_SAGe/templates/site_SAGe. Neste diretorio estão os arquivos: *home.html, cadastro.html, portal_do_paciente.html, sobre.html*. Os arquivos do programa.
 
+### Extra:
+- É indicado criar um ambiente virtual para iniciar um projeto no django para windows (existem outros modos também):
+    ```cmd
+        python -m venv <nome do ambiente virtual>
+    ```
+    - Para ativar
+    ```cmd
+        venv\Scripts\activate
+        
+    ```
+    - para desativar:
+    ```cmd
+    deactivate
+    ```
 
-- **Extra:**Na criação do app é necessario coloca-lo no arquivo settings.py, no caso já está (PI_SAGe):
+- Após criar o ambiente virtual
+    ```cmd
+    django-admin startproject <nome do projeto>
+    ```
+    - para criar um app:
+    ```cmd
+    django-admin startapp <nome do app>
+    ```
 
+- Após a criação do app é necessario coloca-lo no arquivo settings.py, como exemplo (PI_SAGe):
 
 
 ```python
@@ -47,7 +69,7 @@ urlpatterns = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'PI_SAGe'
+    'PI_SAGe'#Nome do app criado :)
 ]
 
 ```
