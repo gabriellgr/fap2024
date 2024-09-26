@@ -6,7 +6,7 @@ def home(request):
     return render(request, 'site_SAGe/home.html')
 
 def portal_do_paciente(request):
-    return render(request, 'site_SAGe/portal_do_paciente.html')
+    return render(request, 'site_SAGe/gerenciar.html')
 
 def sobre(request):
     return render(request, 'site_SAGe/sobre.html')
