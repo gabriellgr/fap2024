@@ -8,7 +8,9 @@
     <script src="teste.js"></script>
 
     <style>
-
+      *{
+        font-size: 1.2rem;
+      }
       a:hover{
           color: blue !important;
       
@@ -31,22 +33,29 @@
         }
 
          /*header*/
-    ul,div.container-fluid{
-        background-color: aquamarine !important;
-        color: black !important;
+         ul,div.container-fluid{
+        background-color: rgb(25, 50, 0) !important;
+        color: white !important;
         margin: 0%;
+        opacity: 0.8;
       }
       /*links*/
       
-      a{
-        color: black !important;
+      a.nav-link{
+        color: white !important;
+        
+        border: 2px solid black;
+        border-radius: 6px ;
+        
       }
       
       a:hover{
+      
+        font-size: +1.4rem !important;
         transition: 1s;
-        background-color: rgb(0, 150, 150);
+        background-color: rgb(250, 250, 250);
         border-radius: 6px;
-        color: rgb(0, 0, 0) !important;
+        color: rgb(25, 50, 0) !important;
       }
       /*botão*/
       button:hover{
@@ -62,7 +71,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Login</a>
+          <a class="navbar-brand" href="#">Cadastrar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -93,7 +102,7 @@
 
       <h1>Cadastre um novo paciente </h1>
 
-      <form action="{% url 'login' %}" method="post">
+      <form action="{% url 'gerenciar' %}" method="post">
         {% csrf_token %}<!--Token de aurorização-->
         <div >
           <label for="nome">Nome:</label>
@@ -105,7 +114,7 @@
         </div>
         <div >
           <label for="cpf">CPF:</label>
-          <input type="text" class="form-control" id="cpfInput" name="cpf" placeholder="Digite seu CPF">
+          <input type="text" class="form-control" id="cpfInput" name="cpf" placeholder="CPF">
         </div>
         <div >
           <label for="telefone">Telefone:</label>
