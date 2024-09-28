@@ -6,10 +6,6 @@
     <title>Gerenciamento</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!--
-    
-    -->
-
 
     <style>
         *{
@@ -17,7 +13,6 @@
         }
         a:hover{
             color: blue !important;
-        
         }
         button{
             border-radius: 6px !important;
@@ -26,8 +21,6 @@
         input{
             border-radius: 6px !important;
         }
-        
-        
         body{
         background:url('https://images.unsplash.com/photo-1714241759740-75a397e2a174?q=80&w=1926&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') ;
         color: black;
@@ -38,6 +31,7 @@
       }
       td{
         background-color: bisque !important;
+        
       }
       /*target dos links*//*divs dentro do div principal*/
 
@@ -126,7 +120,7 @@
             <h3>Ações</h3>
             <ol>
 
-            <li><a class="sumario" href="#agendar">Agendar nova consulta</a></li>           
+              <li>  <a class="sumario" href="{% url 'cadastro' %}">Cadastrar</a><l/i>
             
             <li><a class="sumario" href="#lista_de_medicos">Lista de Médicos</a></li>
             
@@ -179,77 +173,59 @@
     <div id="lista_de_medicos">
 
         <h3>Horários e funções </h3>
+        *FAZER*
          <strong>Lista de médicos, funções e horário de atendimento </strong>
 
-            <table class="table table-striped">
-                <thead>
+         <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Função</th>
+                    <th>Consultas marcadas</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medico in medicos %}
                     <tr>
-                        <th>Nome</th>
-                        <th>Função</th>
-                        <th>Horário</th>
+                        <td>{{ medico.nome }}</td> 
+                        <td>{{ medico.funcao }}</td>
+                        <td>{{ medico.data_consulta }}</td> 
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Dra. Ana Carolina Silva</td>
-                        <td>Cardiologista</td>
-                        <td>14:00 - 18:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Bruno Oliveira Santos</td>
-                        <td>Ortopedista</td>
-                        <td>09:00 - 12:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dra. Camila Ferreira Lima</td>
-                        <td>Pediatra</td>
-                        <td>10:00 - 16:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Daniel Alves Costa</td>
-                        <td>Neurologista</td>
-                        <td>15:00 - 19:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dra. Érica Rodrigues Gomes</td>
-                        <td>Dermatologista</td>
-                        <td>11:00 - 17:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Felipe Souza Pereira</td>
-                        <td>Gastroenterologista</td>
-                        <td>08:00 - 12:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dra. Gabriela Martins Lopes</td>
-                        <td>Oftalmologista</td>
-                        <td>16:00 - 20:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dr. Henrique Santos Almeida</td>
-                        <td>Urologista</td>
-                        <td>09:00 - 13:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dra. Isabela Oliveira Ribeiro</td>
-                        <td>Ginecologista</td>
-                        <td>10:00 - 14:00</td>
-                    </tr>
-                    <tr>
-                        <td>Dr. João Paulo Silva Costa</td>
-                        <td>Cirurgião Geral</td>
-                        <td>14:00 - 18:00</td>
-                    </tr>
-                </tbody>
-            </table>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 
     <div id="pacientes">
 
         <h3>Lista de pacientes</h3>
+    <h1>Lista de Pacientes</h1>
 
-        <strong>fazer lista</strong>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Idade</th>
+                <th>CPF</th>
+                <th>Data da Consulta</th>
+                <th>Telefone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+    <tr>
+        <td>{{ paciente.id }}</td>
+        <td>{{ paciente.nome }}</td>
+        <td>{{ paciente.idade }}</td>
+        <td>{{ paciente.cpf }}</td>
+        <td>{{ paciente.data_consulta }}</td>
+        <td>{{ paciente.telefone }}</td>
+    </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
     </div>
 
@@ -280,39 +256,6 @@ function verificarEscolha() {
 
 }
         </script>
-
-
-
-<!--
-<div class="container" >
-    <table>
-        <tr>
-            <th>id</th>
-            <th>nome</th>
-            <th>idade</th>
-            <th>senha</th>
-            <th>cpf</th>
-            <th>data</th>
-            <th>telefone</th>
-        </tr>
-
-        {% for cadastro in cadastros %}
-        <tr>
-            <td>{{ cadastro.id }}</td>
-            <td>{{ cadastro.nome }}</td>
-            <td>{{ cadastro.idade }}</td>
-            <td>{{ cadastro.senha }}</td>
-            <td>{{ cadastro.cpf }}</td>
-            <td>{{ cadastro.data }}</td>
-            <td>{{ cadastro.telefone }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
-
--->
-
-
 
 </body>
 </html>
