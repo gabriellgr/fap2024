@@ -1,3 +1,5 @@
+ # Django
+ 
  ### Como rodar o programa:
 - Na mesma pasta contendo o manage.py, depois de intalar o django faça no terminal (no caso, windows):
  ```cmd
@@ -75,3 +77,25 @@ urlpatterns = [
 ```
 
 
+### Arquivos estáticos [static (css, js, imagem)]:
+
+- Se for usado arquivos como .css, .js ou mesmo imagens é necessário a criação da pasta "static"
+na raiz do projeto (mesmo diretório do manage.py).
+
+    - [Vídeo de auxilio](https://youtu.be/AWIJ2uMRjS0?feature=shared)
+
+- no arquivo settings.py
+
+``` python
+
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    
+    os.path.join(BASE_DIR, 'static')#nome da pasta
+]
+```
+- para carregar os arquivos no html.
+```html
+{% load static %}
+```

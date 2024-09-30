@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-
+from datetime import datetime
 from .models import Pacientes, Medicos
+from time import sleep    
 
 def home(request):
     return render(request, 'site_SAGe/home.html')
@@ -20,10 +21,12 @@ def gerenciar(request):
 
     pacientes = Pacientes.objects.all()
     medicos = Medicos.objects.all()
+    data_hora_atual = datetime.now() 
     
     context = {
         "pacientes":pacientes,
         "medicos":medicos,
+        "data_hora":data_hora_atual,
     }
     
     return render(request, 'site_SAGe/gerenciar.html', context ) 
