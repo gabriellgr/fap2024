@@ -22,6 +22,9 @@ def tratar_palavra(palavra:str):
         #ponto
         if i =='.':
             palavra[counter]=''
+        if i=="." or i=='-':
+            palavra[counter]=''
+            
         counter+=1
             
     print(''.join(palavra))
@@ -29,5 +32,5 @@ def tratar_palavra(palavra:str):
     return ''.join(palavra)
 
 if __name__=='__main__':
-    tratar_palavra('É um teste à palavras que contêm acentos (à,è,ì,ò,ù ).')
+    tratar_palavra('É um teste à palavras que contêm acentos (à,è,ì,ò,ù ).-----')
     #saida: e um teste a palavras que contem acentos (a,e,i,o,u )

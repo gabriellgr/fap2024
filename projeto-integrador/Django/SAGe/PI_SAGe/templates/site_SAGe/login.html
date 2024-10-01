@@ -44,15 +44,16 @@
       <div class="div_container">
         
 
-            <form action="{% url 'home' %}">
-                <label for="cpf-login">CPF:</label >
-                    <input id="cpf-login" type="text" title="Seu CPF colocado no cadastro" placeholder="CPF">
-                    <br>
-                    <br>
-                    <label for="id">Id único:</label >
-                    <input  id="id" type="password" min="6" max="10" placeholder="Id" title="Seu Id criado no cadastro">
-                    <br>
-                    <button type="submit" class="botao">Entrar</button>
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf-login" required>
+                <br>
+                <br>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha-login" id="senha" required>
+                <br>
+                <button type="submit" class="botao">Entrar</button>
             </form>
             
             <br>
