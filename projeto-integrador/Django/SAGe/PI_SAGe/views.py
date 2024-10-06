@@ -9,7 +9,7 @@ def tratar_palavra(palavra:str):
     palavra=list(palavra.lower())
     counter = 0
     
-    for i in palavra:
+''' for i in palavra:
         
         #vogais
         if i == "é" or i=='è'or i=='ê':
@@ -37,7 +37,7 @@ def tratar_palavra(palavra:str):
     print(''.join(palavra))
     
     return ''.join(palavra)
-
+'''
 def home(request):
     return render(request, 'site_SAGe/home.html')
 
@@ -58,11 +58,13 @@ def portal_do_paciente(request):
     pacientes = Pacientes.objects.all()
     medicos = Medicos.objects.all()
     data_hora_atual = datetime.now() 
+    data = datetime.now() 
     
     context = {
         "pacientes":pacientes,
         "medicos":medicos,
         "data_hora":data_hora_atual,
+        "data":data
     }
     
     return render(request, 'site_SAGe/portal_do_paciente.html', context ) 
@@ -126,3 +128,6 @@ def admin_page(request):
 
 def cadastrar_medicos(request):
     return render(request, 'site_SAGe/cadastrar_medicos.html')
+
+def recuperar_senha(request):
+    return render(request, 'site_SAGe/recuperar_senha.html')

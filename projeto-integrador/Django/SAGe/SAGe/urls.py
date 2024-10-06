@@ -9,5 +9,5 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('admin/', views.admin_page, name='admin'),
     path('cadastrar_medicos/', views.cadastrar_medicos, name='cadastrar_medicos'),
-    
+    path('recuperar_senha/', views.recuperar_senha, name='recuperar_senha'),
 ]
